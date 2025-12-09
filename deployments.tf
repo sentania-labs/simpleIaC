@@ -1,7 +1,7 @@
 #Catalog Item request
 module "deployments" {
   source   = "sentania-labs/vmapps-deployment/vra"
-  version  = "0.1.0"
+  version  = "0.2.0"
   for_each = var.deployments
 
   project_name    = var.project_name
