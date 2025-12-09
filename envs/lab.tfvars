@@ -1,26 +1,4 @@
 virtual_machines = {
-  test_constraints = {
-    virtual_machine_name        = "iac"
-    virtual_machine_description = "Deployed via TF - Do not Edit"
-    image                       = "ubuntu24"
-    flavor                      = "small"
-    tags = [
-      { key = "serviceLevel", value = "production" },
-      { key = "application", value = "finance" }
-    ]
-    constraints = [
-      {
-        mandatory  = true
-        expression = "application:finance"
-      }
-    ]
-    image_disk_constraints = [
-      {
-        mandatory  = true
-        expression = "storageTier:iscsi"
-      }
-    ]
-  },
   hr_vm_1 = {
     virtual_machine_name        = "hr-vm"
     virtual_machine_description = "Deployed via TF - Do not Edit"
@@ -43,7 +21,7 @@ virtual_machines = {
       }
     ]
   },
-    hr_vm_2 = {
+  hr_vm_2 = {
     virtual_machine_name        = "hr-vm2"
     virtual_machine_description = "Deployed via TF - Do not Edit"
     image                       = "ubuntu24"
