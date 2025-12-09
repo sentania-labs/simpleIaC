@@ -4,7 +4,7 @@ module "deployments" {
   version  = "0.1.0"
   for_each = var.deployments
 
-  project_name    = each.value.project_name
+  project_name    = var.project_name
   deployment_name = each.value.deployment_name
   description     = each.value.description
   inputs          = each.value.inputs
