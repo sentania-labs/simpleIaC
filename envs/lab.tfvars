@@ -74,10 +74,10 @@ deployments = {
     }
   }
   explicittags = {
-    catalog_item_name    = "VM With Disks"
-    deployment_name      = "Ubuntu Deployment with vSphere with required tags"
-    description          = "Provisioned by TF"
-    catalog_item_version = "explicittags"
+    blueprint_name    = "VM With Disks"
+    deployment_name   = "Ubuntu Deployment with vSphere with required tags"
+    description       = "Provisioned by TF"
+    blueprint_version = "explicittags"
     inputs = {
       flavorSize   = "medium"
       diskCount    = 2
