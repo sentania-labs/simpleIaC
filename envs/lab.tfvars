@@ -1,5 +1,5 @@
 virtual_machines = {
-  myfirstvirtualmachine = {
+  test_constraints = {
     virtual_machine_name        = "iac"
     virtual_machine_description = "Deployed via TF - Do not Edit"
     image                       = "ubuntu24"
