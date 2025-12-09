@@ -1,12 +1,27 @@
 virtual_machines = {
   myfirstvirtualmachine = {
-  virtual_machine_name        = "iac"
-  virtual_machine_description = "Deployed via TF - Do not Edit"
-  image                      = "ubuntu24"
-  flavor                     = "small"
+    virtual_machine_name        = "iac"
+    virtual_machine_description = "Deployed via TF - Do not Edit"
+    image                       = "ubuntu24"
+    flavor                      = "small"
+    tags = [
+      { key = "serviceLevel", value = "production" },
+      { key = "application", value = "finance" }
+    ]
+    constraints = [
+      {
+        mandatory  = true
+        expression = "application:finance"
+      }
+    ]
+    image_disk_constraints = [
+      {
+        mandatory  = true
+        expression = "storageTier:iscsi"
+      }
+    ]
   }
 }
-
 deployments = {
   version2 = {
     catalog_item_name    = "VM With Disks"
