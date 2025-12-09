@@ -1,4 +1,5 @@
 #Catalog Item request
+
 module "deployments" {
   source   = "sentania-labs/vmapps-consume-catalogitem/vra"
   version  = "0.5.0"
@@ -11,7 +12,6 @@ module "deployments" {
   catalog_item_version = each.value.catalog_item_version
   inputs               = each.value.inputs
 }
-
 
 data "vra_machine" "all" {
   for_each = {

@@ -44,3 +44,17 @@ virtual_machines = {
     ]
   }
 }
+deployments = {
+  catalog_item_no_tags = {
+    catalog_item_name    = "VM With Disks"
+    deployment_name      = "Simple No Frills Version 2"
+    description          = "Provisioned by TF"
+    catalog_item_version = 2
+    inputs = {
+      flavorSize = "medium"
+      diskCount  = 2
+      diskSize   = 10
+      image      = "ubuntu22"
+    }
+  }
+}
