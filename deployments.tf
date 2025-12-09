@@ -5,6 +5,7 @@ module "deployments" {
   for_each = var.deployments
 
   deployment_name      = each.value.deployment_name
+  project_name         = var.project_name
   description          = each.value.description
   catalog_item_name    = each.value.catalog_item_name
   catalog_item_version = each.value.catalog_item_version

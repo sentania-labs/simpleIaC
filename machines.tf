@@ -6,7 +6,7 @@ module "machine" {
 
   virtual_machine_name        = each.value.virtual_machine_name
   virtual_machine_description = each.value.virtual_machine_description
-  project_name                = each.value.project_name
+  project_name                = var.project_name
   image                       = each.value.image
   flavor                      = each.value.flavor
 }
