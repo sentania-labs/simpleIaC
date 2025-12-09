@@ -1,15 +1,14 @@
 virtual_machines = {
   myfirstvirtualmachine = {
-    virtual_machine_name       = "iac"
-    virtua_machine_description = "Deployed via TF - Do not Edit"
-    image                      = "ubuntu24"
-    flavor                     = "small"
+  virtual_machine_name        = "iac"
+  virtual_machine_description = "Deployed via TF - Do not Edit"
+  image                      = "ubuntu24"
+  flavor                     = "small"
   }
 }
 
 deployments = {
   version2 = {
-    project_name         = "VCF Lab Sandbox"
     catalog_item_name    = "VM With Disks"
     deployment_name      = "Simple No Frills Version 2"
     description          = "Provisioned by TF"
@@ -22,7 +21,6 @@ deployments = {
     }
   }
   version3 = {
-    project_name         = "VCF Lab Sandbox"
     catalog_item_name    = "VM With Disks"
     deployment_name      = "Ubuntu Deployment with vSphere Tags Array"
     description          = "Provisioned by TF"
@@ -39,7 +37,6 @@ deployments = {
     }
   }
   explicittags = {
-    project_name         = "VCF Lab Sandbox"
     catalog_item_name    = "VM With Disks"
     deployment_name      = "Ubuntu Deployment with vSphere with required tags"
     description          = "Provisioned by TF"
