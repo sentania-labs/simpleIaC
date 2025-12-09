@@ -5,7 +5,7 @@ module "machine" {
   for_each = var.virtual_machines
 
   virtual_machine_name       = each.value.virtual_machine_name
-  virtua_machine_description = each.value.virtual_machine_description
+  virtual_machine_description = each.value.virtual_machine_description
   project_name               = each.value.project_name
   image                      = each.value.image
   flavor                     = each.value.flavor
