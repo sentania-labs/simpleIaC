@@ -1,5 +1,12 @@
-vcfa_url          = "https://vcf-lab-automation.int.sentania.net"
-vcfa_organization = "vcf-lab-vm-apps"
+virtual_machines = {
+  myfirstvirtualmachine = {
+    virtual_machine_name       = "iac"
+    virtua_machine_description = "Deployed via TF - Do not Edit"
+    image                      = "ubuntu24"
+    flavor                     = "small"
+  }
+}
+
 deployments = {
   version2 = {
     project_name         = "VCF Lab Sandbox"

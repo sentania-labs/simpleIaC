@@ -18,6 +18,9 @@ jobs:
 
       # vSphere / vRA / VCF environment-specific credentials
       TF_VAR_vcfa_refresh_token: ${{ secrets.VCFA_REFRESH_TOKEN}}
+      TF_VAR_project_name: ${{ var.VCFA_PROJECT_NAME}}
+      TF_VAR_vcfa_organization: ${{ var.VCFA_ORGANIZATION_NAME}}
+      TF_VAR_vcfa_url: ${{ var.VCFA_URL}}
 
     steps:
       - name: Checkout repository
