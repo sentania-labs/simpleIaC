@@ -61,3 +61,8 @@ variable "deployments" {
   type        = any
 }
 
+variable "virtual_machines" {
+  description = "Map of virtual machines to deploy."
+  type        = any
+}
+
