@@ -3,7 +3,7 @@ virtual_machines = {
     virtual_machine_name        = "hr-vm"
     virtual_machine_description = "Deployed via TF - Do not Edit"
     image                       = "ubuntu24"
-    flavor                      = "small"
+    flavor                      = "medium"
     tags = [
       { key = "serviceLevel", value = "production" },
       { key = "application", value = "hr" }
@@ -25,7 +25,7 @@ virtual_machines = {
     virtual_machine_name        = "hr-vm2"
     virtual_machine_description = "Deployed via TF - Do not Edit"
     image                       = "ubuntu24"
-    flavor                      = "small"
+    flavor                      = "medium"
     tags = [
       { key = "serviceLevel", value = "production" },
       { key = "application", value = "hr" }
