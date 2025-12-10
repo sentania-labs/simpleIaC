@@ -1,6 +1,6 @@
 #Catalog Item request
 module "machine" {
-  source   = "sentania-labs/vmapps-vra-machine/vra"
+  source   = "sentania-labs/machine/vra"
   version  = "0.2.0"
   for_each = var.virtual_machines
 

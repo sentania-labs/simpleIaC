@@ -1,5 +1,5 @@
 module "deployments" {
-  source   = "sentania-labs/vmapps-deployment/vra"
+  source   = "sentania-labs/deployment/vra"
   version  = "0.3.0"
   for_each = var.deployments
 
