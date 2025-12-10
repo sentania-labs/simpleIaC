@@ -1,6 +1,6 @@
 virtual_machines = {
-  hr_vm_1 = {
-    virtual_machine_name        = "hr-vm"
+  hr_vm_1a = {
+    virtual_machine_name        = "hr-vm1a"
     virtual_machine_description = "Deployed via TF - Do not Edit"
     image                       = "ubuntu24"
     flavor                      = "medium"
@@ -21,8 +21,8 @@ virtual_machines = {
       }
     ]
   },
-  hr_vm_2 = {
-    virtual_machine_name        = "hr-vm2"
+  hr_vm_2a = {
+    virtual_machine_name        = "hr-vm2a"
     virtual_machine_description = "Deployed via TF - Do not Edit"
     image                       = "ubuntu24"
     flavor                      = "medium"
@@ -45,9 +45,9 @@ virtual_machines = {
   }
 }
 deployments = {
-  catalog_item_no_tags = {
+  catalogdeployment1 = {
     catalog_item_name    = "VM With Disks"
-    deployment_name      = "Simple No Frills Version"
+    deployment_name      = "Simple No Frills Version - 1a"
     description          = "Provisioned by TF"
     catalog_item_version = 2
     inputs = {
@@ -57,9 +57,9 @@ deployments = {
       image      = "ubuntu22"
     }
   }
-  catalog_item_no_tags2 = {
+  catalogdeployment2 = {
     catalog_item_name    = "VM With Disks"
-    deployment_name      = "Simple No Frills Version 2"
+    deployment_name      = "Simple No Frills Version - 2a"
     description          = "Provisioned by TF"
     catalog_item_version = 2
     inputs = {
@@ -69,9 +69,9 @@ deployments = {
       image      = "ubuntu22"
     }
   }
-  catalog_item_free_form_tags = {
+  catalogdeployment3 = {
     catalog_item_name    = "VM With Disks"
-    deployment_name      = "Ubuntu Deployment with vSphere Tags Array"
+    deployment_name      = "Ubuntu Deployment with Tags Array"
     description          = "Provisioned by TF"
     catalog_item_version = 3
     inputs = {
@@ -85,9 +85,9 @@ deployments = {
       ]
     }
   }
-  blueprint_with_explicit_tags = {
+  blueprintdeployment1 = {
     blueprint_name    = "VM With Disks"
-    deployment_name   = "Ubuntu Deployment with vSphere with required tags"
+    deployment_name   = "Ubuntu Deployment with   required tags"
     description       = "Provisioned by TF"
     blueprint_version = "explicittags"
     inputs = {
