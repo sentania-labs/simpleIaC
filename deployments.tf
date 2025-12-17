@@ -32,3 +32,13 @@ resource "local_file" "lb_config" {
   })
   filename = "${path.module}/server-list.txt"
 }
+#create dns Names
+module "dns_names" {
+  source  = "sentania-labs/msdns/dns"
+  version = "0.1.0"
+  for_each  = data.vra_machine.all
+
+  hostname  = each.value.name
+  zone      = "int.sentania.net."
+  addresses = ["${each.value.address}"]
+}
