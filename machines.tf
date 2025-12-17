@@ -17,9 +17,9 @@ module "machine" {
 #create dns Names
 module "dns_names" {
   source   = "sentania-labs/msdns/dns"
-  for_each = [module.machine]
   version  = "0.1.0"
-
+  
+  for_each = module.machine
   hostname  = each.value.virtual_machine.name
   zone      = "int.sentania.net"
   addresses = each.value.virtual_machine.address
