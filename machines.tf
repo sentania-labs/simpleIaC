@@ -22,5 +22,5 @@ module "dns_names" {
   for_each  = module.machine
   hostname  = each.value.virtual_machine.name
   zone      = "int.sentania.net"
-  addresses = each.value.virtual_machine.address
+  addresses = each.value.virtual_machine.ipaddr
 }
