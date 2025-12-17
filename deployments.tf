@@ -34,9 +34,9 @@ resource "local_file" "lb_config" {
 }
 #create dns Names
 module "dns_names" {
-  source  = "sentania-labs/msdns/dns"
-  version = "0.1.0"
-  for_each  = data.vra_machine.all
+  source   = "sentania-labs/msdns/dns"
+  version  = "0.1.0"
+  for_each = data.vra_machine.all
 
   hostname  = each.value.name
   zone      = "int.sentania.net."
