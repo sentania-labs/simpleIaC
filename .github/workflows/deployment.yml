@@ -22,6 +22,11 @@ jobs:
       TF_INPUT: "false"
 
       # vSphere / vRA / VCF environment-specific credentials
+      TF_VAR_serviceAccountUserName: ${{ secrets.KRB_SERVICE_USER }}
+      TF_VAR_serviceAccountPassword: ${{ secrets.SERVICEACCOUNTPASSWORD }}
+      TF_VAR_krb_realm: ${{ secrets.KRB_REALM }}
+      KRB5_CONFIG: ${{ secrets.KRB5_CONF}}
+      TF_VAR_dns_server: ${{ secrets.DNS_SERVER }}
       TF_VAR_vcfa_refresh_token: ${{ secrets.VCFA_REFRESH_TOKEN}}
       TF_VAR_project_name: ${{ secrets.VCFA_PROJECT_NAME}}
       TF_VAR_vcfa_organization: ${{ secrets.VCFA_ORGANIZATION_NAME}}
