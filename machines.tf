@@ -15,7 +15,7 @@ module "machine" {
 }
 
 #create dns Names
-module "dns_names" {
+module "machine_dns_names" {
   source  = "sentania-labs/msdns/dns"
   version = "0.1.0"
 
