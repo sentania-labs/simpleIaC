@@ -1,5 +1,6 @@
 virtual_machines = {
   hr_vm_1a = {
+    zone                        = "int.sentania.net"
     virtual_machine_name        = "hr-vm1a"
     virtual_machine_description = "Deployed via TF - Do not Edit"
     image                       = "ubuntu24"
@@ -22,6 +23,7 @@ virtual_machines = {
     ]
   },
   hr_vm_2a = {
+    zone                        = "int.sentania.net"
     virtual_machine_name        = "hr-vm2a"
     virtual_machine_description = "Deployed via TF - Do not Edit"
     image                       = "ubuntu24"

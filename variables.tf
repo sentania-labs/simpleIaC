@@ -66,3 +66,23 @@ variable "virtual_machines" {
   type        = any
 }
 
+variable "dns_server" {
+  type        = string
+  description = "DNS server to publish records to"
+}
+
+variable "krb_realm" {
+  type        = string
+  description = "Kerberos Realm to authenticate against"
+}
+
+variable "serviceAccountUserName" {
+  type        = string
+  description = "KRB username"
+}
+
+variable "serviceAccountPassword" {
+  type        = string
+  sensitive   = true
+  description = "Password"
+}

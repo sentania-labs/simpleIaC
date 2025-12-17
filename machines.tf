@@ -1,4 +1,4 @@
-#Catalog Item request
+#Catalog IaC vms
 module "machine" {
   source   = "sentania-labs/machine/vra"
   version  = "0.2.0"
@@ -12,4 +12,15 @@ module "machine" {
   constraints                 = each.value.constraints
   image_disk_constraints      = each.value.image_disk_constraints
   tags                        = each.value.tags
+}
+
+#create dns Names
+module "dns_names" {
+  source   = "sentania-labs/msdns/dns"
+  for_each = [module.machine]
+  version  = "0.1.0"
+
+  hostname  = each.value.virtual_machine.name
+  zone      = "int.sentania.net"
+  addresses = each.value.virtual_machine.address
 }
