@@ -22,6 +22,7 @@ virtual_machines = {
       }
     ]
   }
+}
 deployments = {
   catalogdeployment2026 = {
     catalog_item_name    = "VM With Disks"
