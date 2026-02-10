@@ -47,21 +47,9 @@ virtual_machines = {
   }
 }
 deployments = {
-  catalogdeployment1 = {
-    catalog_item_name    = "VM With Disks"
-    deployment_name      = "Simple No Frills Version - 1a"
-    description          = "Provisioned by TF"
-    catalog_item_version = 2
-    inputs = {
-      flavorSize = "medium"
-      diskCount  = 2
-      diskSize   = 10
-      image      = "ubuntu22"
-    }
-  }
   catalogdeployment2 = {
     catalog_item_name    = "VM With Disks"
-    deployment_name      = "Simple No Frills Version - 2a"
+    deployment_name      = "Catalog Simple No Frills Version - 1a"
     description          = "Provisioned by TF"
     catalog_item_version = 2
     inputs = {
@@ -73,7 +61,19 @@ deployments = {
   }
   catalogdeployment3 = {
     catalog_item_name    = "VM With Disks"
-    deployment_name      = "Ubuntu Deployment with Tags Array"
+    deployment_name      = "Catalog Simple No Frills Version - 2a"
+    description          = "Provisioned by TF"
+    catalog_item_version = 2
+    inputs = {
+      flavorSize = "medium"
+      diskCount  = 2
+      diskSize   = 10
+      image      = "ubuntu22"
+    }
+  }
+  catalogdeployment4 = {
+    catalog_item_name    = "VM With Disks"
+    deployment_name      = "Catalog Ubuntu Deployment with Tags Array"
     description          = "Provisioned by TF"
     catalog_item_version = 3
     inputs = {
@@ -87,9 +87,9 @@ deployments = {
       ]
     }
   }
-  blueprintdeployment1 = {
+  blueprintdeployment2 = {
     blueprint_name    = "VM With Disks"
-    deployment_name   = "Ubuntu Deployment with   required tags"
+    deployment_name   = "Blueprint Ubuntu Deployment with  required tags"
     description       = "Provisioned by TF"
     blueprint_version = "explicittags"
     inputs = {
