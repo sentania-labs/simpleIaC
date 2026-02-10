@@ -47,7 +47,7 @@ virtual_machines = {
   }
 }
 deployments = {
-  catalogdeployment2 = {
+  catalogdeployment1 = {
     catalog_item_name    = "VM With Disks"
     deployment_name      = "Catalog Simple No Frills Version - 1a"
     description          = "Provisioned by TF"
@@ -59,19 +59,7 @@ deployments = {
       image      = "ubuntu22"
     }
   }
-  catalogdeployment3 = {
-    catalog_item_name    = "VM With Disks"
-    deployment_name      = "Catalog Simple No Frills Version - 2a"
-    description          = "Provisioned by TF"
-    catalog_item_version = 2
-    inputs = {
-      flavorSize = "medium"
-      diskCount  = 2
-      diskSize   = 10
-      image      = "ubuntu22"
-    }
-  }
-  catalogdeployment4 = {
+  catalogdeployment2 = {
     catalog_item_name    = "VM With Disks"
     deployment_name      = "Catalog Ubuntu Deployment with Tags Array"
     description          = "Provisioned by TF"
@@ -87,7 +75,7 @@ deployments = {
       ]
     }
   }
-  blueprintdeployment2 = {
+  blueprintdeployment1 = {
     blueprint_name    = "VM With Disks"
     deployment_name   = "Blueprint Ubuntu Deployment with  required tags"
     description       = "Provisioned by TF"
