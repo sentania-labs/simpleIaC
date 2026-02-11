@@ -89,4 +89,18 @@ deployments = {
       application  = "sandbox"
     }
   }
+  blueprintdeployment2 = {
+    blueprint_name    = "VM With Disks"
+    deployment_name   = "Blueprint Ubuntu24 Deployment with required tags"
+    description       = "Provisioned by TF"
+    blueprint_version = "explicittags"
+    inputs = {
+      flavorSize   = "medium"
+      diskCount    = 2
+      diskSize     = 10
+      image        = "ubuntu24"
+      serviceLevel = "sandbox"
+      application  = "sandbox"
+    }
+  }
 }
