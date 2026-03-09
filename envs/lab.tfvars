@@ -1,7 +1,7 @@
 virtual_machines = {
-  hr_vm_1a = {
+  hr_vm_1 = {
     zone                        = "int.sentania.net"
-    virtual_machine_name        = "hr-vm1a"
+    virtual_machine_name        = "hr-vm1"
     virtual_machine_description = "Deployed via TF - Do not Edit"
     image                       = "ubuntu24"
     flavor                      = "medium"
@@ -24,9 +24,9 @@ virtual_machines = {
   }
 }
 deployments = {
-  catalogdeployment1 = {
+  catalogdeployment = {
     catalog_item_name    = "VM With Disks"
-    deployment_name      = "Catalog Simple No Frills Version - 1a"
+    deployment_name      = "Catalog Simple No Frills Version - 1"
     description          = "Provisioned by TF"
     catalog_item_version = 2
     inputs = {
