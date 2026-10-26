@@ -1,12 +1,12 @@
-# State lives on the lab S3 (versitygw on the Synology) over HTTPS since
-# 2026-09-28; before that it was the AWS bucket sentania-labs-terraform-state
-# (same key, set at init by the workflow with -backend-config).
+# State lives on the lab S3 (versitygw on the Synology) over HTTPS, one key per
+# config. Only lab runners (label `lab`) can reach it.
 # The skip_* settings are what an S3-compatible, non-AWS endpoint needs; locking
 # is the S3 lock file. Rollback of a bad state write: the Synology's hourly
 # share snapshots.
 terraform {
   backend "s3" {
     bucket                      = "tfstate"
+    key                         = "vra/simpleiac/lab/terraform.tfstate"
     region                      = "us-east-1"
     endpoints                   = { s3 = "https://s3.int.sentania.net:9443" }
     use_path_style              = true
