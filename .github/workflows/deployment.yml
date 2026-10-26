@@ -7,11 +7,16 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      confirm_apply:
+        description: 'Type "apply" to run terraform apply against the lab. Anything else plans only.'
+        required: true
+        type: string
 
 jobs:
   terraform:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.owner.login == 'sentania-labs'
-    runs-on: [self-hosted, terraform]
+    runs-on: lab
 
     env:
       # State backend credentials (lab S3). The S3 backend reads the AWS_*
@@ -41,24 +46,8 @@ jobs:
       - name: Terraform Format Check
         run: terraform fmt -check
 
-      - name: Compute Terraform state key
-        id: tfstate
-        shell: bash
-        run: |
-          PROJECT_SLUG=$(echo "$VCFA_PROJECT_NAME" \
-            | tr '[:upper:]' '[:lower:]' \
-            | sed 's/[^a-z0-9]+/-/g; s/^-//; s/-$//')
-
-          PROJECT_ID_SHORT=$(echo "$VCFA_PROJECT_ID" | cut -d- -f1)
-
-          TF_STATE_KEY="vra/${PROJECT_SLUG}__${PROJECT_ID_SHORT}/terraform.tfstate"
-
-          echo "TF_STATE_KEY=$TF_STATE_KEY" >> "$GITHUB_ENV"
-
       - name: Terraform Init
-        run: |
-             terraform init -migrate-state -input=false -upgrade \
-             -backend-config="key=${TF_STATE_KEY}"
+        run: terraform init -input=false
 
       - name: Terraform Validate
         run: terraform validate
@@ -69,22 +58,13 @@ jobs:
               -var-file="envs/lab.tfvars" \
               -out=tfplan
 
-      - name: Upload Plan Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: terraform-plan
-          path: tfplan
-
+      # Apply is manual only: a push to main or a PR never applies. The plan
+      # file stays on the runner (it carries credentials; never upload it).
       - name: Terraform Apply
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'workflow_dispatch' && inputs.confirm_apply == 'apply'
         run: terraform apply -input=false -auto-approve tfplan
-        
-      - name: Upload output Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: server-list.txt
-          path: server-list.txt
 
       - name: Clean workspace
+        if: always()
         run: rm -rf $GITHUB_WORKSPACE/.[!.]*
 
