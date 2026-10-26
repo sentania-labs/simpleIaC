@@ -14,8 +14,33 @@ on:
         type: string
 
 jobs:
-  terraform:
+  # Credential-free: the only job an untrusted pull_request branch runs.
+  check:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.owner.login == 'sentania-labs'
+    runs-on: lab
+    env:
+      TF_IN_AUTOMATION: "true"
+      TF_INPUT: "false"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Terraform Format Check
+        run: terraform fmt -check
+
+      - name: Terraform Init (no backend)
+        run: terraform init -backend=false -input=false
+
+      - name: Terraform Validate
+        run: terraform validate
+
+  # Credentialed: never runs on pull_request, so PR branches never see the
+  # S3, VCFA or GitHub secrets.
+  plan:
+    needs: check
+    if: github.event_name != 'pull_request'
     runs-on: lab
 
     env:
@@ -43,14 +68,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Terraform Format Check
-        run: terraform fmt -check
-
       - name: Terraform Init
         run: terraform init -input=false
-
-      - name: Terraform Validate
-        run: terraform validate
 
       - name: Terraform Plan
         run: |
@@ -58,8 +77,8 @@ jobs:
               -var-file="envs/lab.tfvars" \
               -out=tfplan
 
-      # Apply is manual only: a push to main or a PR never applies. The plan
-      # file stays on the runner (it carries credentials; never upload it).
+      # Apply is manual only: a push to main never applies. The plan file
+      # stays on the runner (it carries credentials; never upload it).
       - name: Terraform Apply
         if: github.event_name == 'workflow_dispatch' && inputs.confirm_apply == 'apply'
         run: terraform apply -input=false -auto-approve tfplan
@@ -67,4 +86,3 @@ jobs:
       - name: Clean workspace
         if: always()
         run: rm -rf $GITHUB_WORKSPACE/.[!.]*
-

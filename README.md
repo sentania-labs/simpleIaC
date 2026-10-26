@@ -35,14 +35,15 @@ This repo owns the VCF Automation deployments and machines declared in `deployme
 
 CI (`.github/workflows/deployment.yml`) runs on the `lab` runner pool:
 
-- Pull requests and pushes to `main` run fmt, init, validate and **plan only**.
+- Pull requests run only credential-free checks (fmt, `init -backend=false`, validate), so an untrusted branch never sees the S3, VCFA or GitHub secrets.
+- Pushes to `main` run the same checks plus a credentialed **plan only**.
 - Apply is manual: run the workflow with `workflow_dispatch` from the Actions tab and enter `apply` in the `confirm_apply` input. Any other value plans only.
 
 ### First apply
 
 1. An org admin scopes the org secrets `TF_STATE_S3_ACCESS_KEY_ID` and `TF_STATE_S3_SECRET_ACCESS_KEY` to this repository.
-2. Open a PR, read the plan in the job log, and confirm it is what you want created.
-3. Merge, then run the workflow manually with `confirm_apply = apply`.
+2. Open a PR and merge it once the checks pass. The push to `main` runs the plan; read it in the job log and confirm it is what you want created.
+3. Run the workflow manually with `confirm_apply = apply`.
 
 ---
 
