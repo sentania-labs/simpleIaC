@@ -88,8 +88,10 @@ virtual_machines = {}
 
 ### 4. Initialize and apply
 
+Give every custom environment its own state key. `backend.tf` defaults to the lab key (`vra/simpleiac/lab/terraform.tfstate`), so an init without the override would plan against, and could destroy, the lab resources.
+
 ```bash
-terraform init
+terraform init -backend-config="key=vra/simpleiac/my-env/terraform.tfstate"
 terraform plan -var-file="envs/my-env.tfvars"
 terraform apply -var-file="envs/my-env.tfvars"
 ```
